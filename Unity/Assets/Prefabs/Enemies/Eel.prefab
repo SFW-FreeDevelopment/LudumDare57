@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2547378493818610501}
   - component: {fileID: 1763603276413423893}
   - component: {fileID: 911457940401725936}
+  - component: {fileID: 5324933987186871464}
   m_Layer: 0
   m_Name: Eel
   m_TagString: Untagged
@@ -100,3 +101,52 @@ MonoBehaviour:
   speed: 2
   patrolDistance: 12
   flipSpriteOnTurn: 1
+  goingRight: 1
+  isReversedOrientation: 0
+  eelSprites: []
+  animationFrameRate: 6
+--- !u!61 &5324933987186871464
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5895824915026033094}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.8203125, y: 0.79296875}
+    newSize: {x: 12.34, y: 2.03}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 0.4}
+  m_EdgeRadius: 0

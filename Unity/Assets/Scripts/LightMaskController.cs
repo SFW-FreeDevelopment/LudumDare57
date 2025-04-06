@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class LightMaskController : MonoBehaviour
     public Transform player;
     public Material maskMaterialSource;
     public PlayerLightController lightController;
+    public List<LightMaskHole> lightHoles = new List<LightMaskHole>();
 
     [Header("Base Light Settings")]
     public float minRadius = 0.1f;
