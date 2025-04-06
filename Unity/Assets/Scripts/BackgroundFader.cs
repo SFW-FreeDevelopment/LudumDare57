@@ -6,7 +6,8 @@ public class BackgroundFaderByDepth : MonoBehaviour
     public Color startColor = new Color32(0x00, 0x3f, 0x5c, 255); // #003f5c
     public Color targetColor = new Color32(0x00, 0x08, 0x14, 255); // or a deeper blue if desired
     public float maxFadeDistance = 100f; // How far the player falls before fully faded
-
+    public SpriteRenderer ambientTexture;
+    
     [Header("Pulse Settings")]
     public float pulseSpeed = 0.5f; // slower is more subtle
     public float pulseIntensity = 0.05f; // how much to brighten/dim (e.g. 0.05 = ±5%)
@@ -25,6 +26,7 @@ public class BackgroundFaderByDepth : MonoBehaviour
         }
 
         cam.backgroundColor = startColor;
+        ambientTexture.color = startColor;
     }
 
     void Update()
@@ -49,5 +51,6 @@ public class BackgroundFaderByDepth : MonoBehaviour
         pulsedColor.b = Mathf.Clamp01(pulsedColor.b);
 
         cam.backgroundColor = pulsedColor;
+        ambientTexture.color = pulsedColor;
     }
 }
