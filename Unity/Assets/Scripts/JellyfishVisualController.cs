@@ -21,6 +21,9 @@ public class JellyfishVisualController : MonoBehaviour
     [Header("Blink Settings")]
     public float blinkChance = 0.2f;
     public float blinkHoldTime = 0.25f;
+    
+    [Header("Control")]
+    public bool isPlayerControlled = false;
 
     private bool showingIdle = false;
     private bool isBlinking = false;
@@ -57,7 +60,7 @@ public class JellyfishVisualController : MonoBehaviour
         }
 
         // Trigger jump (customize this to your actual jump logic)
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isPlayerControlled && Input.GetKeyDown(KeyCode.Space))
         {
             jumpTimer = jumpDisplayTime;
         }

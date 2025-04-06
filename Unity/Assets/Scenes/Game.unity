@@ -5280,6 +5280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -5290,6 +5291,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &101715581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8658712067999513933, guid: 3f47828d38d818a469949dd28b7f61e3, type: 3}
@@ -10111,6 +10113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -10121,6 +10124,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &104196713
 GameObject:
   m_ObjectHideFlags: 0
@@ -15026,6 +15030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -15036,6 +15041,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!4 &113379793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2547378493818610501, guid: 928ba3f709f2f924dadae8c4b5e90d56, type: 3}
@@ -20188,6 +20194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -20198,6 +20205,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &269804525
 GameObject:
   m_ObjectHideFlags: 0
@@ -25677,6 +25685,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -25687,6 +25696,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!4 &644830008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 890795797599071438, guid: 13bd4c9afcc884b48899eea4af4c4b88, type: 3}
@@ -30685,6 +30695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -30695,6 +30706,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!4 &738644987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2547378493818610501, guid: 928ba3f709f2f924dadae8c4b5e90d56, type: 3}
@@ -40739,6 +40751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -40749,6 +40762,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!4 &926671579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2547378493818610501, guid: 928ba3f709f2f924dadae8c4b5e90d56, type: 3}
@@ -45649,6 +45663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -45659,6 +45674,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &981237656
 GameObject:
   m_ObjectHideFlags: 0
@@ -50791,6 +50807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -50801,6 +50818,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1001 &1093638715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56227,6 +56245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -56237,6 +56256,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &1280665269
 GameObject:
   m_ObjectHideFlags: 0
@@ -61218,6 +61238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -61228,6 +61249,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 1
 --- !u!114 &1280665278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66220,6 +66242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -66230,6 +66253,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &1462524068
 GameObject:
   m_ObjectHideFlags: 0
@@ -71387,6 +71411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -71397,6 +71422,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &1736141299
 GameObject:
   m_ObjectHideFlags: 0
@@ -76325,6 +76351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -76335,6 +76362,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1001 &1794135347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -81376,6 +81404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -81386,6 +81415,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &1853300904
 GameObject:
   m_ObjectHideFlags: 0
@@ -86776,6 +86806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -86786,6 +86817,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1 &2137594850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7489857313570752301, guid: 102f7e43b83e3774cafd3f5360a5cbd5, type: 3}
@@ -91607,6 +91639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSprite: {fileID: 21300000, guid: 141effe68d5df72489795c3037ce13f1, type: 3}
   idleSprite: {fileID: 21300000, guid: 18eb2e714da4e264cae0c5b2cfd5a394, type: 3}
+  idleBlinkSprite: {fileID: 21300000, guid: d87dc9d66056cfe4abde04367a901825, type: 3}
   moveSprite1: {fileID: 21300000, guid: 402e0efdd1747b345a684204d7eaa4e9, type: 3}
   moveSprite2: {fileID: 21300000, guid: f9534a20f31f5b145859f40b8131a46f, type: 3}
   moveBlinkSprite: {fileID: 21300000, guid: 7aefeaa6db0081c47b4d2a6a9a63840e, type: 3}
@@ -91617,6 +91650,7 @@ MonoBehaviour:
   jumpDisplayTime: 0.2
   blinkChance: 0.2
   blinkHoldTime: 0.25
+  isPlayerControlled: 0
 --- !u!1001 &1556995423106384155
 PrefabInstance:
   m_ObjectHideFlags: 0
