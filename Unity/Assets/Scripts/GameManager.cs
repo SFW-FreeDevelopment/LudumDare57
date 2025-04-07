@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,11 +17,21 @@ public class GameManager : MonoBehaviour
     public UnityEvent onLose;
     public TextMeshProUGUI gameOverText;
     public GameObject mainUI;
+    public GameObject gameOverUI;
+    public Button restartButton;
 
     private bool gameEnded = false;
     private float elapsedTime = 0f;
     public float ElapsedTime => elapsedTime;
 
+    void Awake()
+    {
+        restartButton.onClick.AddListener(() => {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        });
+    }
+    
     void Update()
     {
         if (gameEnded) return;
@@ -48,7 +60,7 @@ public class GameManager : MonoBehaviour
         if (gameEnded) return;
 
         gameEnded = true;
-        mainUI.SetActive(false);
+        gameOverUI.SetActive(true);
         gameOverText.gameObject.SetActive(true);
 
         if (won)
@@ -61,7 +73,7 @@ public class GameManager : MonoBehaviour
             gameOverText.text = "Uh oh, you're all out of light!";
             onLose?.Invoke();
         }
-
+        
         // Optional: Freeze time or show UI
         Time.timeScale = 0f;
     }
