@@ -9,6 +9,9 @@ public class KrillPickup : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
+        var playSound1 = Random.Range(0, 10) < 5;
+        OneShotAudioPlayer.PlayClip(playSound1 ? OneShotAudioPlayer.SoundEffect.Collect1 : OneShotAudioPlayer.SoundEffect.Collect2);
+        
         // Handle light charge increase
         PlayerLightController lightController = other.GetComponent<PlayerLightController>();
         if (lightController != null)

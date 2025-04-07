@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+    
     [Header("Tracking")]
     public Transform playerTransform;
     public PlayerLightController lightController;
@@ -19,6 +21,17 @@ public class GameManager : MonoBehaviour
     public GameObject mainUI;
     public GameObject gameOverUI;
     public Button restartButton;
+    public Button mainMenuButton;
+    public Button playGameButton;
+    public bool isMainMenu = false;
+    
+    [Header("Sound FX")]
+    public AudioClip gameOverSound;
+    public AudioClip gameWonSound;
+    public AudioClip clickSound;
+    public AudioClip backSound;
+    public AudioClip collect1Sound;
+    public AudioClip collect2Sound;
 
     private bool gameEnded = false;
     private float elapsedTime = 0f;
@@ -26,14 +39,34 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        restartButton.onClick.AddListener(() => {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        });
+        Instance = this;
+        
+        if (restartButton != null)
+            restartButton.onClick.AddListener(() => {
+                Time.timeScale = 1f;
+                OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            });
+        
+        
+        if (playGameButton != null)
+            playGameButton.onClick.AddListener(() => {
+                Time.timeScale = 1f;
+                OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
+                SceneManager.LoadScene("Game");
+            });
+        
+        if (mainMenuButton != null)
+            mainMenuButton.onClick.AddListener(() => {
+                Time.timeScale = 1f;
+                OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
+                SceneManager.LoadScene("Main");
+            });
     }
     
     void Update()
     {
+        if (isMainMenu) return;
         if (gameEnded) return;
 
         // Track time
@@ -66,11 +99,13 @@ public class GameManager : MonoBehaviour
         if (won)
         {
             gameOverText.text = "Hooray, you made it the bottom!";
+            OneShotAudioPlayer.PlayClip(gameWonSound);
             onWin?.Invoke();
         }
         else
         {
             gameOverText.text = "Uh oh, you're all out of light!";
+            OneShotAudioPlayer.PlayClip(gameOverSound);
             onLose?.Invoke();
         }
         
