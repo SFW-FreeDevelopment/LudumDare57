@@ -3,17 +3,18 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    
+
     [Header("Tracking")]
     public Transform playerTransform;
     public PlayerLightController lightController;
     public float maxDepth = 100f; // in meters
     public float maxDepthUnits = 1f; // depth in Unity units that maps to maxDepth
-    
+
     [Header("Game State")]
     public UnityEvent onWin;
     public UnityEvent onLose;
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour
     public Button mainMenuButton;
     public Button playGameButton;
     public bool isMainMenu = false;
-    
+    public AudioSource gameMusicAudioSource;
+
     [Header("Sound FX")]
     public AudioClip gameOverSound;
     public AudioClip gameWonSound;
@@ -37,25 +39,34 @@ public class GameManager : MonoBehaviour
     private float elapsedTime = 0f;
     public float ElapsedTime => elapsedTime;
 
+    // ------------------------------
+    [Header("Krill Spawn Settings")]
+    public GameObject krillPrefab;
+    public int krillPerZone = 10;
+    public int zoneCount = 10;
+    public float zoneWidth = 10f;
+    public float zoneHeight = 10f;
+    public float krillMinSpacing = 1f;
+    // ------------------------------
+
     void Awake()
     {
         Instance = this;
-        
+
         if (restartButton != null)
             restartButton.onClick.AddListener(() => {
                 Time.timeScale = 1f;
                 OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             });
-        
-        
+
         if (playGameButton != null)
             playGameButton.onClick.AddListener(() => {
                 Time.timeScale = 1f;
                 OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
                 SceneManager.LoadScene("Game");
             });
-        
+
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(() => {
                 Time.timeScale = 1f;
@@ -63,16 +74,21 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Main");
             });
     }
-    
+
+    void Start()
+    {
+        if (!isMainMenu)
+        {
+            SpawnKrillAcrossZones();
+        }
+    }
+
     void Update()
     {
-        if (isMainMenu) return;
-        if (gameEnded) return;
+        if (isMainMenu || gameEnded) return;
 
-        // Track time
         elapsedTime += Time.deltaTime;
 
-        // Check win condition (hit max depth)
         float currentDepthUnits = Mathf.Max(0f, -playerTransform.position.y);
         float currentDepthMeters = currentDepthUnits * (maxDepth / maxDepthUnits);
 
@@ -81,7 +97,6 @@ public class GameManager : MonoBehaviour
             EndGame(true);
         }
 
-        // Check lose condition (glow power zero or less)
         if (lightController.GetLightCharge() <= 0f)
         {
             EndGame(false);
@@ -95,6 +110,7 @@ public class GameManager : MonoBehaviour
         gameEnded = true;
         gameOverUI.SetActive(true);
         gameOverText.gameObject.SetActive(true);
+        gameMusicAudioSource.enabled = false;
 
         if (won)
         {
@@ -108,8 +124,46 @@ public class GameManager : MonoBehaviour
             OneShotAudioPlayer.PlayClip(gameOverSound);
             onLose?.Invoke();
         }
-        
-        // Optional: Freeze time or show UI
+
         Time.timeScale = 0f;
+    }
+    
+    void SpawnKrillAcrossZones()
+    {
+        for (int i = 0; i < zoneCount; i++)
+        {
+            float zoneMinX = -zoneWidth / 2f;
+            float zoneMaxX = zoneWidth / 2f;
+            float zoneMinY = -i * zoneHeight;
+            float zoneMaxY = zoneMinY + zoneHeight;
+
+            List<Vector2> spawnedThisZone = new List<Vector2>();
+            int attempts = 0;
+            int maxAttempts = 1000;
+
+            while (spawnedThisZone.Count < krillPerZone && attempts < maxAttempts)
+            {
+                attempts++;
+                float x = Random.Range(zoneMinX, zoneMaxX);
+                float y = Random.Range(zoneMinY, zoneMaxY);
+                Vector2 candidate = new Vector2(x, y);
+
+                bool tooClose = false;
+                foreach (Vector2 pos in spawnedThisZone)
+                {
+                    if (Vector2.Distance(pos, candidate) < krillMinSpacing)
+                    {
+                        tooClose = true;
+                        break;
+                    }
+                }
+
+                if (!tooClose)
+                {
+                    Instantiate(krillPrefab, candidate, Quaternion.identity);
+                    spawnedThisZone.Add(candidate);
+                }
+            }
+        }
     }
 }

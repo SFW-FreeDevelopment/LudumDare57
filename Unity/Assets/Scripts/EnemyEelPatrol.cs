@@ -3,7 +3,9 @@ using UnityEngine;
 public class EnemyEelPatrol : MonoBehaviour
 {
     public float speed = 2f;
-    public float patrolDistance = 12f; // total distance it swims before turning around
+    [Header("Patrol Bounds (world space)")]
+    public float patrolMinX = -12f;
+    public float patrolMaxX = 12f;
     public bool flipSpriteOnTurn = true;
     public bool goingRight = true;
     public bool isReversedOrientation = false;
@@ -16,12 +18,27 @@ public class EnemyEelPatrol : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private int currentFrame = 0;
     private float animationTimer = 0f;
+    private Vector3 startPos;
+    private float patrolDistance;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Randomize starting X position between patrol bounds
+        float startX = Random.Range(patrolMinX, patrolMaxX);
+        transform.position = new Vector3(startX, transform.position.y, transform.position.z);
+        startPos = transform.position;
+
+        // Randomize direction
+        goingRight = Random.value > 0.5f;
         direction = goingRight ? Vector3.right : Vector3.left;
+
+        // Flip sprite if needed
         spriteRenderer.flipX = isReversedOrientation ? !goingRight : goingRight;
+
+        // Calculate patrol distance based on how far to go in each direction
+        patrolDistance = Mathf.Abs(patrolMaxX - patrolMinX) / 2f;
 
         // Randomize animation start frame
         if (eelSprites != null && eelSprites.Length > 0)
@@ -37,7 +54,7 @@ public class EnemyEelPatrol : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
 
         // Check distance from start
-        float distanceFromStart = Vector3.Distance(new Vector3(transform.position.x, 0f, 0f), new Vector3(0f, 0f, 0f));
+        float distanceFromStart = Mathf.Abs(transform.position.x - startPos.x);
         if (distanceFromStart >= patrolDistance)
         {
             // Turn around

@@ -4,45 +4,65 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 3f;
     public float fallSpeed = 1f;
-    public float upwardBoost = 5f;
-    public float levelWidth = 10f; // Total horizontal span of the level
+    public float boostForce = 5f;
+    public float verticalControlSpeed = 2f;
+    public float levelWidth = 10f;
+    public float maxFallSpeed = -5f;
+    public float maxRiseSpeed = 5f;
+    public float boostXMultiplier = 1.5f;
 
     private Rigidbody2D rb;
     private Vector2 input;
+    private int verticalIntent = 0; // 1 = up, -1 = down, 0 = neutral
+    private int horizontalIntent = 0; // 1 = right, -1 = left, 0 = none
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f; // We'll control gravity manually
+        rb.gravityScale = 0f;
     }
 
     void Update()
     {
-        // Get horizontal & vertical input
-        input = new Vector2(
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical")
-        ).normalized;
+        // Update horizontal input (remember last non-zero direction)
+        float rawX = Input.GetAxisRaw("Horizontal");
+        input = new Vector2(rawX, 0f).normalized;
 
-        // Spacebar gives a small upward boost
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (rawX > 0) horizontalIntent = 1;
+        else if (rawX < 0) horizontalIntent = -1;
+
+        // Update vertical intent
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            verticalIntent = 1;
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            verticalIntent = -1;
+
+        // Boost in the direction of intent
+        if (Input.GetKeyDown(KeyCode.Space) && verticalIntent != 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, upwardBoost);
+            float boostY = verticalIntent * boostForce;
+            float boostX = horizontalIntent * moveSpeed * boostXMultiplier;
+
+            rb.velocity = new Vector2(boostX, boostY);
         }
     }
 
     void FixedUpdate()
     {
-        // Continuous downward movement
-        Vector2 downward = new Vector2(0, -fallSpeed);
+        // Apply gravity-like downward force
+        float newY = rb.velocity.y + (-fallSpeed * Time.fixedDeltaTime);
 
-        // Add player input for lateral control
-        Vector2 movement = new Vector2(input.x * moveSpeed, rb.velocity.y);
+        // Smoothly add vertical intent if holding W or S
+        newY += verticalIntent * verticalControlSpeed * Time.fixedDeltaTime;
 
-        // Combine input with downward drift
-        rb.velocity = new Vector2(movement.x, rb.velocity.y + downward.y * Time.fixedDeltaTime);
-        
-        // Clamp position X within level bounds
+        // Clamp vertical speed
+        newY = Mathf.Clamp(newY, maxFallSpeed, maxRiseSpeed);
+
+        // Apply movement
+        float moveX = input.x * moveSpeed;
+        rb.velocity = new Vector2(moveX, newY);
+
+        // Clamp horizontal position
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, -levelWidth / 2f, levelWidth / 2f);
         transform.position = pos;

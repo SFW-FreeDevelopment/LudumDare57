@@ -35,7 +35,17 @@ public class SimpleFishSwimmer : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        startPos = new Vector3(0f, transform.position.y, transform.position.z);
+
+        // Randomize X within patrol bounds, keep Y and Z from scene
+        float startX = Random.Range(patrolMinX, patrolMaxX);
+        Vector3 initialPosition = new Vector3(startX, transform.position.y, transform.position.z);
+        transform.position = initialPosition;
+
+        // Record Y for vertical bobbing
+        startPos = new Vector3(0f, initialPosition.y, initialPosition.z);
+
+        // Randomize direction
+        direction = Random.value > 0.5f ? 1f : -1f;
 
         if (animationFrames.Length > 0)
             sr.sprite = animationFrames[0];
