@@ -12,7 +12,7 @@ public class OneShotAudioPlayer : MonoBehaviour
         Collect2
     }
     
-    public static void PlayClip(SoundEffect soundEffect, float volume = 1f, float pitch = 1f, float destroyAfter = 5f)
+    public static void PlayClip(SoundEffect soundEffect, float volume = 0.8f, float pitch = 1f, float destroyAfter = 5f)
     {
         if (GameManager.Instance == null) return;
         var audioClip = soundEffect switch
@@ -28,7 +28,7 @@ public class OneShotAudioPlayer : MonoBehaviour
         PlayClip(audioClip, volume, pitch, destroyAfter);
     }
     
-    public static void PlayClip(AudioClip clip, float volume = 1f, float pitch = 1f, float destroyAfter = 5f)
+    public static void PlayClip(AudioClip clip, float volume = 0.8f, float pitch = 1f, float destroyAfter = 5f)
     {
         if (clip == null) return;
 

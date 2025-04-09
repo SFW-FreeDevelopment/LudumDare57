@@ -90314,8 +90314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d32cb99780c4e7baa8a7725dffc89ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightCharge: 0.2
-  drainRate: 0.05
+  lightCharge: 0.25
+  drainRate: 0.04
 --- !u!114 &1280665279
 MonoBehaviour:
   m_ObjectHideFlags: 0
