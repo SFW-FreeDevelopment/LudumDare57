@@ -36,7 +36,7 @@ public class GlowSliderSync : MonoBehaviour
 
     void Update()
     {
-        if (glowSlider == null || glowText == null || lightController == null)
+        if (glowSlider == null || glowText == null || lightController == null || GameManager.Instance == null || GameManager.Instance.GameOver)
             return;
 
         float targetValue = lightController.GetLightCharge() * 100f;

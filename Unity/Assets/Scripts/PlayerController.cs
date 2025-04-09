@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance == null || GameManager.Instance.GameOver) return;
+        
         // Update horizontal input (remember last non-zero direction)
         float rawX = Input.GetAxisRaw("Horizontal");
         input = new Vector2(rawX, 0f).normalized;

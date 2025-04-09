@@ -58868,6 +58868,7 @@ MonoBehaviour:
   zoneWidth: 10
   zoneHeight: 10
   krillMinSpacing: 2
+  yOffset: -10
 --- !u!4 &922807052
 Transform:
   m_ObjectHideFlags: 0

@@ -35,11 +35,12 @@ public class GameManager : MonoBehaviour
     public AudioClip collect1Sound;
     public AudioClip collect2Sound;
 
+    public bool GameOver => gameEnded;
+
     private bool gameEnded = false;
     private float elapsedTime = 0f;
     public float ElapsedTime => elapsedTime;
-
-    // ------------------------------
+    
     [Header("Krill Spawn Settings")]
     public GameObject krillPrefab;
     public int krillPerZone = 10;
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
     public float zoneWidth = 10f;
     public float zoneHeight = 10f;
     public float krillMinSpacing = 1f;
-    // ------------------------------
+    public float yOffset = -1f; // Shift all krill zones downward by 1 unit
 
     void Awake()
     {
@@ -55,21 +56,18 @@ public class GameManager : MonoBehaviour
 
         if (restartButton != null)
             restartButton.onClick.AddListener(() => {
-                Time.timeScale = 1f;
                 OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             });
 
         if (playGameButton != null)
             playGameButton.onClick.AddListener(() => {
-                Time.timeScale = 1f;
                 OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
                 SceneManager.LoadScene("Game");
             });
 
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(() => {
-                Time.timeScale = 1f;
                 OneShotAudioPlayer.PlayClip(OneShotAudioPlayer.SoundEffect.Click);
                 SceneManager.LoadScene("Main");
             });
@@ -124,8 +122,6 @@ public class GameManager : MonoBehaviour
             OneShotAudioPlayer.PlayClip(gameOverSound);
             onLose?.Invoke();
         }
-
-        Time.timeScale = 0f;
     }
     
     void SpawnKrillAcrossZones()
@@ -134,7 +130,8 @@ public class GameManager : MonoBehaviour
         {
             float zoneMinX = -zoneWidth / 2f;
             float zoneMaxX = zoneWidth / 2f;
-            float zoneMinY = -i * zoneHeight;
+            
+            float zoneMinY = -i * zoneHeight + yOffset;
             float zoneMaxY = zoneMinY + zoneHeight;
 
             List<Vector2> spawnedThisZone = new List<Vector2>();

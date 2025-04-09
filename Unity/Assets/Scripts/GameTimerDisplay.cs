@@ -8,7 +8,7 @@ public class GameTimerDisplay : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gameManager == null) return;
+        if (gameManager == null || GameManager.Instance == null || GameManager.Instance.GameOver) return;
 
         float time = gameManager.ElapsedTime;
         int minutes = Mathf.FloorToInt(time / 60f);

@@ -14,6 +14,8 @@ public class DepthTrackerUI : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance == null || GameManager.Instance.GameOver) return;
+        
         // Get how far below Y = 0 the player is
         float depthUnits = Mathf.Max(0f, -playerTransform.position.y);
         float depthMeters = depthUnits * depthMultiplier;
